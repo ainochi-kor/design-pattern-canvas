@@ -1,7 +1,7 @@
 const GRIMPAN_CONSTRUCTOR_SIMBOL = Symbol("Grimpan");
 
-class Grimpan {
-  private static instance: Grimpan | null = null;
+class IEGrimpan {
+  private static instance: IEGrimpan | null = null;
 
   private constructor(canvas: HTMLElement | null, symbol: symbol) {
     if (symbol !== GRIMPAN_CONSTRUCTOR_SIMBOL) {
@@ -14,7 +14,7 @@ class Grimpan {
 
   static getInstance() {
     if (!this.instance) {
-      this.instance = new Grimpan(
+      this.instance = new IEGrimpan(
         document.querySelector("#canvas") as HTMLElement,
         GRIMPAN_CONSTRUCTOR_SIMBOL
       );
@@ -23,4 +23,4 @@ class Grimpan {
   }
 }
 
-export default Grimpan;
+export default IEGrimpan;
