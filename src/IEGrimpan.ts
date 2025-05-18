@@ -1,22 +1,21 @@
+import Grimpan from "./AbstractGrimpan.js";
+
 const GRIMPAN_CONSTRUCTOR_SIMBOL = Symbol("Grimpan");
 
-class IEGrimpan {
-  private static instance: IEGrimpan | null = null;
+class IEGrimpan extends Grimpan {
+  protected static override instance: IEGrimpan;
 
-  private constructor(canvas: HTMLElement | null, symbol: symbol) {
-    if (symbol !== GRIMPAN_CONSTRUCTOR_SIMBOL) {
-      throw new Error("new를 통해 생성할 수 없습니다.");
-    }
-    if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
-      throw new Error("canvas 엘리먼트를 입력하세요.");
-    }
+  override initialize(): void {
+    throw new Error("Method not implemented.");
+  }
+  override initializeMenu(): void {
+    throw new Error("Method not implemented.");
   }
 
-  static getInstance() {
+  static override getInstance() {
     if (!this.instance) {
       this.instance = new IEGrimpan(
-        document.querySelector("#canvas") as HTMLElement,
-        GRIMPAN_CONSTRUCTOR_SIMBOL
+        document.querySelector("#canvas") as HTMLElement
       );
     }
     return this.instance;
