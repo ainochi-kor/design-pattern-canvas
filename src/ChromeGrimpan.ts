@@ -8,9 +8,6 @@ class ChromeGrimpan extends Grimpan {
   override initialize(): void {
     throw new Error("Method not implemented.");
   }
-  override initializeMenu(): void {
-    throw new Error("Method not implemented.");
-  }
 
   static override getInstance() {
     if (!this.instance) {
