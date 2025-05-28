@@ -30,6 +30,31 @@ export class IEGrimpanMenu extends GrimpanMenu {
   }
 }
 
+abstract class Command {
+  abstract execute(): void;
+}
+
+class BackCommand extends Command {
+  name = "back"
+  override execute(): void {
+    // 뒤로 가기 로직
+  }
+}
+
+class PenCommand extends Command {
+  name = "pen"
+  override execute(): void {
+    // 뒤로 가기 로직
+  }
+}
+
+class EraserCommand extends Command {
+  name = "eraser"
+  override execute(): void {
+    // 뒤로 가기 로직
+  }
+}
+
 type BtnType =
   | "pen"
   | "circle"
@@ -44,6 +69,22 @@ export class ChromeGrimpanMenu extends GrimpanMenu {
   private static instance: ChromeGrimpanMenu;
   override initialize(types: BtnType[]): void {
     types.forEach(this.drawButtonByType.bind(this));
+  }
+
+  executeCommand(command: BackCommand) {
+    command.execute();
+  }
+
+  onClickBack(){
+    this.executeCommand(new BackCommand());
+  }
+
+  onClickPen() {
+    this.executeCommand(new PenCommand());
+  }
+
+  onClickEraser() {
+    this.executeCommand(new EraserCommand());
   }
 
   drawButtonByType(type: BtnType) {
